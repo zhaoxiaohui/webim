@@ -1,0 +1,713 @@
+
+
+.messages-list{padding-bottom:30px;
+}
+.unread{color:green}
+
+.reply{
+	text-align:right;
+	background-color:#e3e3e3;
+}
+.logo{
+	display: block;
+	margin: 0 auto;
+	border-radius: 35px;
+}
+
+label.error { 
+	float: left; 
+	color: green; 
+	padding-top: .5em; 
+	vertical-align: top; 
+	font-weight:bold
+}
+
+.head-image{
+	width:78px;
+	height:78px;
+	border-radius: 20px;
+}
+
+.head-image-little{
+	width:56px;
+	height:56px;
+	border-radius: 10px;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.server_select{margin-bottom:30px}
+span.dt{color:grey;font-size:0.8em}
+
+/* pull */
+
+
+body {
+
+  /* Disable Safari scrollbars, because jQuery Mobile annoyingly insists on setting the
+     min-height of the page to 320px. It does this (unsuccessfully, in 1.0.1, but successfully
+     in 1.1) in order to keep the Mobile Safari location bar from appearing during page
+     transitions. But this causes a problem in desktop Safari if the height is <320px.
+     If you resize to <320 in a desktop browser, you will see a scrollbar if you don't
+     use this style.
+
+     I haven't put this in jquery.mobile.iscrollview.css, because it has to be applied
+     to <body>, and so it will affect the entire site/app. It is an appropriate
+     setting for any site/app meant to use a page size fixed at the browser window size.
+     If your site/app mixes fixed-height pages with scrolling pages, you will need to
+     work out another solution. */
+  overflow:hidden;
+
+  /* optimizeSpeed is the default. Using optimizeLegibility here will typically DOUBLE
+     rendering time! So, think twice about using optimizeLegibility */
+  text-rendering: optimizeSpeed;
+
+  /* subpixel-antialiased is the default, but you might like to use antialiased for a thinner look
+     in Safari. There is no speed penalty for this, nor a speed advantage for "none", which looks
+     absolutely terrible... */
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  /* Shut off long touch on links for info. If this is set to "default", then a long touch
+     on a link will display the URL in a popup. This is pretty darn annoying. */
+  -webkit-touch-callout: none;
+
+  /* Shut off content selection, because it's really annoying when dragging
+     You might like to do this only for scroller content, though, or enable it for certain
+     text you want the user to be able to cut-and-paste */
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  }
+
+/* Style header bar and footer bar with a 1px red border at top and bottom. This facilitates
+   a quick visual indication of correct sizing of the page. You should not see any white
+   space above the header or below the footer. (Note that Retina devices will show a 2px border,
+   rather than 1px.) Use your OS's accessibility features to magnify and inspect. On mobile
+   devices, there is usually a way to capture the screen contents to an image file that you can
+   later examine. (iPhone: Home+On/Off)
+*/
+
+.ui-header.ui-bar-a,
+.ui-footer.ui-bar-a {
+    border-top: 1px solid #ff0000;
+    border-bottom: 1px solid #ff0000;
+}
+
+/* make room for version buttons in header */
+.ui-header .ui-title {
+  text-align: center;
+}
+
+/* Style iScroll wrapper with a 1px green border at top and bottom. You should see no gap
+   or different color between the top of the wrapper and the bottom of the header, or between
+   the bottom of the wrapper and the top of the footer.
+*/
+.iscroll-wrapper {
+  border-top: 1px solid #00ff00;
+  border-bottom: 1px solid #00ff00;
+}
+
+
+/* Demonstrate how to make headers/footer a different height for different orientations
+   or screen sizes. This also demonstrates that the widget now (once again) measures the
+   headers/footers on every resize.
+
+   Unfortunately, the state of detecting mobile orientation on mobile devices is a mess.
+   Mobile Safari doesn't support orientation media query, while iPad doesn't. There are
+   various hacks involving max-width, max-height, max-device-width, etc. Fortunately, for
+   this demo, we can use something simple. We want the header and footer to be smaller
+   in landscape because they make the scrollable area too small. So, just test max-height.
+   This will of course also make the header/footer smaller on a desktop browser with
+   very short height - which makes it easy to demonstrate. :) */
+
+
+
+.ui-navbar a {
+  /* For demo, make portrait navbar the same height as iPhone tabbar, because using the
+     standard navbar height for portrait and a shorter navbar for landscape would make
+     the navbar unusably short. */
+     height: 47px;    /* + 2px margins = 49px */
+}
+
+.ui-navbar .ui-btn-inner {
+  font-size: 14px;
+}
+
+@media only screen and (max-height: 280px){
+  .ui-header {
+    height: 30px;
+  }
+
+  .ui-header .ui-title {
+    font-size: 14px;
+  }
+
+  .ui-navbar a {
+    height: 37px;    /* + 2px border = 39px */
+  }
+
+  .ui-navbar .ui-btn-inner {
+    font-size: 13px;
+  }
+}
+
+/* Force list items to be cached on WebKit
+   See: cubiq.org/you-shall-not-flicker
+
+   If this is NOT used, then scrolling long lists might exhibit a "flicker" when scrolling
+   toward the bottom of the list, as well as exhibit slow and jerky until the first
+   time the user has reached the bottom of the list.
+
+   If this IS used, then the browser may be forced to cache the content in advance, resulting
+   in smoother scrolling, but with the side-effect of increasing initial rendering time.
+
+   This can more than DOUBLE initial rendering time if you are not careful with the selector. The
+   recommended CSS at the above link is NOT optimal.
+
+   You need to apply this judiciously. For example, if you know your scroller content consists
+   of list items, use "li" not "*' to select. * as the right-most component of a select is
+   horribly expensive. A small additional performance gain can be made by selecting
+   iscroll-content instead of iscroll-scroller. You might get a
+   glitch on a pull-up if you have one, but it's a small price to pay for doubling speed.
+
+   It is important NOT to apply this to .iscroll-scroller itself. This will result in a huge
+   performance loss. The second rule below gives performance on iOS devices very close to not
+   using this at all.
+
+   I use an @media tag to disable, because it is a safe way of disabling CSS that might contain
+   comments. As well, you might like to enable this only for certain devices, which often
+   can be detected using media queries.
+
+*/
+
+/* This one will always work to eliminate the flicker, regardless of scroller content but
+   is very slow at initial rendering. The scroller may not be initially responsive after
+   a page is first rendered */
+@media DISABLED {
+  .iscroll-scroller,
+  .iscroll-scroller * {
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* So, for the demo, I'm using this one, which doesn't target the scroller itself, and
+   targets specific top-level elements inside the scroller. */
+@media all {
+  .iscroll-content li  {
+    -webkit-transform: translateZ(0);
+  }
+}
+
+
+/* If you want to change the text color or other text properties of listview buttons in the scroller,
+   you have to do it here, not above.
+*/
+.iscroll-pulldown,
+.iscroll-pullup {
+  background: #29220A;
+}
+
+/* Remove background image from non-button scroller content */
+.iscroll-content .ui-body-c
+  {
+  background-image: none;
+  }
+
+
+
+/* page listview */
+/* A bit custom styling */
+.friends .ui-listview li .ui-btn p {
+	color: #c0c0c0;
+}
+.friends .ui-listview li .ui-btn .ui-li-aside {
+	color: #eee;
+}
+
+/* First breakpoint is 48em (768px). 3 column layout. Tiles 250x250 pixels incl. margin at the breakpoint. */
+@media ( min-width: 48em ) {
+	.friends .ui-content {
+		padding: .5625em; /* 9px */
+	}
+	.friends .ui-listview li {
+		float: left;
+		width: 100%%; /* 33.3333% incl. 2 x 1.2% margin */
+		height: 5em; /* 232p */
+		margin: .5625em 1.2%;
+	}
+	.friends .ui-listview li > .ui-btn {
+		-webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		height: 100%;
+	}
+	.friends .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+		height: auto; /* To keep aspect ratio. */
+		max-width: 100%;
+		max-height: none;
+	}
+	/* Make all list items and anchors inherit the border-radius from the UL. */
+	.friends .ui-listview li,
+	.friends .ui-listview li .ui-btn,
+	.friends .ui-listview .ui-li-thumb {
+		-webkit-border-radius: inherit;
+		border-radius: inherit;
+	}
+	/* Hide the icon */
+	.friends .ui-listview .ui-btn-icon-right:after {
+		display: none;
+	}
+	/* Make text wrap. */
+	.friends .ui-listview h2,
+	.friends .ui-listview p {
+		white-space: normal;
+		overflow: visible;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	/* Text position */
+	.friends .ui-listview h2 {
+		font-size: 1.25em;
+		margin: 0;
+		padding: .125em 1em;
+		bottom: 50%;
+	}
+	.friends .ui-listview p {
+		font-size: 1em;
+		margin: 0;
+		padding: 0 1.25em;
+		min-height: 50%;
+		bottom: 0;
+	}
+	/* Semi transparent background and different position if there is a thumb. The button has overflow hidden so we don't need to set border-radius. */
+	.ui-listview .ui-li-has-thumb h2,
+	.ui-listview .ui-li-has-thumb p {
+		background: #111;
+		background: rgba(0,0,0,.8);
+	}
+	.ui-listview .ui-li-has-thumb h2 {
+		bottom: 35%;
+	}
+	.ui-listview .ui-li-has-thumb p {
+		min-height: 35%;
+	}
+	/* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+	.friends .ui-listview .ui-li-aside {
+		padding: .125em .625em;
+		width: auto;
+		min-height: 0;
+		top: 0;
+		left: auto;
+		bottom: auto;
+		/* Custom styling. */
+		background: #990099;
+		background: rgba(153,0,153,.85);
+		-webkit-border-top-right-radius: inherit;
+		border-top-right-radius: inherit;
+		-webkit-border-bottom-left-radius: inherit;
+		border-bottom-left-radius: inherit;
+		-webkit-border-bottom-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	/* If you want to add shadow, don't kill the focus style. */
+	.friends .ui-listview li {
+		-moz-box-shadow: 0px 0px 9px #111;
+		-webkit-box-shadow: 0px 0px 9px #111;
+		box-shadow: 0px 0px 9px #111;
+	}
+	/* Images mask the hover bg color so we give desktop users feedback by applying the focus style on hover as well. */
+	.friends .ui-listview li > .ui-btn:hover {
+		-moz-box-shadow: 0px 0px 12px #33ccff;
+		-webkit-box-shadow: 0px 0px 12px #33ccff;
+		box-shadow: 0px 0px 12px #33ccff;
+	}
+	/* Animate focus and hover style, and resizing. */
+	.friends .ui-listview li,
+	.friends .ui-listview .ui-btn {
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		transition: all 500ms ease;
+	}
+}
+
+/* Second breakpoint is 63.75em (1020px). 4 column layout. Tiles will be 250x250 pixels incl. margin again at the breakpoint. */
+@media ( min-width: 63.75em ) {
+	.friends .ui-content {
+		padding: .625em; /* 10px */
+	}
+	/* Set a max-width for the last breakpoint to prevent too much stretching on large screens.
+	By setting the max-width equal to the breakpoint width minus padding we keep square tiles. */
+	.friends .ui-listview {
+		max-width: 62.5em; /* 1000px */
+		margin: 0 auto;
+	}
+	/* Because of the 1000px max-width the width will always be 230px (and margin left/right 10px),
+	but we stick to percentage values for demo purposes. */
+	.friends .ui-listview li {
+		width: 23%;
+		height: 60px;
+		margin: .625em 1%;
+	}
+}
+
+/* For this demo we used images with a size of 310x310 pixels. Just before the second breakpoint the images reach their max width: 1019px - 2 x 9px padding = 1001px x 30.9333% = ~310px */
+/*  end */
+/* A bit custom styling */
+.goods .ui-listview li .ui-btn p {
+	color: #c0c0c0;
+}
+.goods .ui-listview li .ui-btn .ui-li-aside {
+	color: #eee;
+}
+
+/* First breakpoint is 48em (768px). 3 column layout. Tiles 250x250 pixels incl. margin at the breakpoint. */
+@media ( min-width: 48em ) {
+	.goods .ui-content {
+		padding: .5625em; /* 9px */
+	}
+	.goods .ui-listview li {
+		float: left;
+		width: 30.9333%; /* 33.3333% incl. 2 x 1.2% margin */
+		height: 14.5em; /* 232p */
+		margin: .5625em 1.2%;
+	}
+	.goods .ui-listview li > .ui-btn {
+		-webkit-box-sizing: border-box; /* include padding and border in height so we can set it to 100% */
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		height: 100%;
+	}
+	.goods .ui-listview li.ui-li-has-thumb .ui-li-thumb {
+		height: auto; /* To keep aspect ratio. */
+		max-width: 100%;
+		max-height: none;
+	}
+	/* Make all list items and anchors inherit the border-radius from the UL. */
+	.goods .ui-listview li,
+	.goods .ui-listview li .ui-btn,
+	.goods .ui-listview .ui-li-thumb {
+		-webkit-border-radius: inherit;
+		border-radius: inherit;
+	}
+	/* Hide the icon */
+	.goods .ui-listview .ui-btn-icon-right:after {
+		display: none;
+	}
+	/* Make text wrap. */
+	.goods .ui-listview h2,
+	.goods .ui-listview p {
+		white-space: normal;
+		overflow: visible;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	/* Text position */
+	.goods .ui-listview h2 {
+		font-size: 1.25em;
+		margin: 0;
+		padding: .125em 1em;
+		bottom: 50%;
+	}
+	.goods .ui-listview p {
+		font-size: 1em;
+		margin: 0;
+		padding: 0 1.25em;
+		min-height: 50%;
+		bottom: 0;
+	}
+	/* Semi transparent background and different position if there is a thumb. The button has overflow hidden so we don't need to set border-radius. */
+	.ui-listview .ui-li-has-thumb h2,
+	.ui-listview .ui-li-has-thumb p {
+		background: #111;
+		background: rgba(0,0,0,.8);
+	}
+	.ui-listview .ui-li-has-thumb h2 {
+		bottom: 35%;
+	}
+	.ui-listview .ui-li-has-thumb p {
+		min-height: 35%;
+	}
+	/* ui-li-aside has class .ui-li-desc as well so we have to override some things. */
+	.goods .ui-listview .ui-li-aside {
+		padding: .125em .625em;
+		width: auto;
+		min-height: 0;
+		top: 0;
+		left: auto;
+		bottom: auto;
+		/* Custom styling. */
+		background: #990099;
+		background: rgba(153,0,153,.85);
+		-webkit-border-top-right-radius: inherit;
+		border-top-right-radius: inherit;
+		-webkit-border-bottom-left-radius: inherit;
+		border-bottom-left-radius: inherit;
+		-webkit-border-bottom-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+	/* If you want to add shadow, don't kill the focus style. */
+	.goods .ui-listview li {
+		-moz-box-shadow: 0px 0px 9px #111;
+		-webkit-box-shadow: 0px 0px 9px #111;
+		box-shadow: 0px 0px 9px #111;
+	}
+	/* Images mask the hover bg color so we give desktop users feedback by applying the focus style on hover as well. */
+	.goods .ui-listview li > .ui-btn:hover {
+		-moz-box-shadow: 0px 0px 12px #33ccff;
+		-webkit-box-shadow: 0px 0px 12px #33ccff;
+		box-shadow: 0px 0px 12px #33ccff;
+	}
+	/* Animate focus and hover style, and resizing. */
+	.goods .ui-listview li,
+	.goods .ui-listview .ui-btn {
+		-webkit-transition: all 500ms ease;
+		-moz-transition: all 500ms ease;
+		-o-transition: all 500ms ease;
+		-ms-transition: all 500ms ease;
+		transition: all 500ms ease;
+	}
+}
+
+/* Second breakpoint is 63.75em (1020px). 4 column layout. Tiles will be 250x250 pixels incl. margin again at the breakpoint. */
+@media ( min-width: 63.75em ) {
+	.goods .ui-content {
+		padding: .625em; /* 10px */
+	}
+	/* Set a max-width for the last breakpoint to prevent too much stretching on large screens.
+	By setting the max-width equal to the breakpoint width minus padding we keep square tiles. */
+	.goods .ui-listview {
+		max-width: 62.5em; /* 1000px */
+		margin: 0 auto;
+	}
+	/* Because of the 1000px max-width the width will always be 230px (and margin left/right 10px),
+	but we stick to percentage values for demo purposes. */
+	.goods .ui-listview li {
+		width: 23%;
+		height: 230px;
+		margin: .625em 1%;
+	}
+}
+/* For this demo we used images with a size of 310x310 pixels. Just before the second breakpoint the images reach their max width: 1019px - 2 x 9px padding = 1001px x 30.9333% = ~310px */
+
+
+/* post tags */
+.tags{
+	margin:0;
+	padding:0;
+	position:absolute;
+	right:24px;
+	bottom:-12px;
+	list-style:none;
+	}
+.tags li, .tags a{
+	float:left;
+	height:24px;
+	line-height:24px;
+	position:relative;
+	font-size:11px;
+}
+.tags a{
+	margin-left:20px;
+	padding:0 10px 0 12px;
+	background:#0089e0;
+	color:#fff;
+	text-decoration:none;
+	-moz-border-radius-bottomright:4px;
+	-webkit-border-bottom-right-radius:4px;	
+	border-bottom-right-radius:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-top-right-radius:4px;	
+	border-top-right-radius:4px;	
+	} 
+.tags a:before{
+	content:"";
+	float:left;
+	position:absolute;
+	top:0;
+	left:-12px;
+	width:0;
+	height:0;
+	border-color:transparent #0089e0 transparent transparent;
+	border-style:solid;
+	border-width:12px 12px 12px 0;		
+	}
+.tags a:after{
+	content:"";
+	position:absolute;
+	top:10px;
+	left:0;
+	float:left;
+	width:4px;
+	height:4px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	background:#fff;
+	-moz-box-shadow:-1px -1px 2px #004977;
+	-webkit-box-shadow:-1px -1px 2px #004977;
+	box-shadow:-1px -1px 2px #004977;
+	}
+
+.tags a:hover{background:#555;}	
+
+.tags a:hover:before{border-color:transparent #555 transparent transparent;}
+
+/* .bubble */
+
+.bubble {
+	background-image: linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+background-image: -o-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(210,244,254) 25%, rgb(149,194,253) 100%);
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.25, rgb(210,244,254)),
+	color-stop(1, rgb(149,194,253))
+);
+	border: solid 1px rgba(0, 0, 0, 0.5);
+	/* vendor rules */
+	border-radius: 20px;
+	/* vendor rules */
+	box-shadow: inset 0 5px 5px rgba(255, 255, 255, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+	/* vendor rules */
+	box-sizing: border-box;
+	clear: both;
+	float: left;
+	margin-bottom: 20px;
+	padding: 8px 30px;
+	position: relative;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+	width: auto;
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.bubble:before, .bubble:after {
+	border-radius: 20px / 10px;
+	content: '';
+	display: block;
+	position: absolute;
+}
+
+.bubble:before {
+	border: 10px solid transparent;
+	border-bottom-color: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	left: -7px;
+	z-index: -2;
+}
+
+.bubble:after {
+	border: 8px solid transparent;
+	border-bottom-color: #d2f4fe;
+	bottom: 1px;
+	left: -5px;
+}
+
+.bubble--alt {
+	background-image: linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+background-image: -o-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(172,228,75) 25%, rgb(122,205,71) 100%);
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.25, rgb(172,228,75)),
+	color-stop(1, rgb(122,205,71))
+);
+	float: right;
+}
+
+.bubble--alt:before {
+	border-bottom-color: rgba(0, 0, 0, 0.5);
+	border-radius: 20px / 10px;
+	left: auto;
+	right: -7px;
+}
+
+.bubble--alt:after {
+	border-bottom-color: #ace44b;
+	border-radius: 20px / 10px;
+	left: auto;
+	right: -5px;
+}
+
+.bubbledLeft,.bubbledRight{
+	position: relative;
+	margin-top: 3px;
+	max-width: 80%;
+	clear: both;
+}
+
+.bubbledLeft{
+	float: left;
+	margin-right: auto;
+	padding: 4px 10px 4px 15px; /*position within the border*/
+}
+
+.bubbledLeft:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+
+	border-width: 8px 10px 8px 17px; 
+	border-image: url(../img/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+	-webkit-border-image: url(../img/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+	-moz-border-image: url(../img/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+	-o-border-image: url(../img/speech_bubble_left_2.png) 8 10 8 17 stretch stretch;
+}
+
+.bubbledRight{
+	float: right;
+	margin-left: auto;
+	text-align: right;
+
+	padding: 4px 15px 4px 10px; /*position within the border*/	
+}
+
+.bubbledRight:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+
+	border-width: 8px 17px 8px 10px; 
+	border-image: url(../img/speech_bubble_right_2.png) 8 17 8 10 stretch stretch ;
+	-webkit-border-image: url(../img/speech_bubble_right_2.png) 8 17 8 10 stretch stretch ;
+	-moz-border-image: url(../img/speech_bubble_right_2.png) 8 17 8 10 stretch stretch ;
+	-o-border-image: url(../img/speech_bubble_right_2.png) 8 17 8 10 stretch stretch ;
+}
