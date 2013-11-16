@@ -3,7 +3,7 @@ var ws;
 var selfDisconnect = false;
 Socket = {
 		init : function(user,pass){
-			ws = new FancyWebSocket('ws://192.168.153.1:9300');
+			ws = new FancyWebSocket('ws://219.142.86.69:9300');
 
 			//Let the user know we're connected
 			ws.bind('open', function() {
