@@ -31,6 +31,6 @@ if(isset($_FILES['head_image_file']) && $_FILES['head_image_file']['error'] == 0
 	$img = 'userimage/'.$lastid.'.'.$extension;
 	if(move_uploaded_file($_FILES['head_image_file']['tmp_name'], $img)){}
 }
-$db->modidyImg($lastid, $img);
+$db->modidyImg($lastid, 'server/'.$img);
 echo '{"status":"success"}';
 ?>
