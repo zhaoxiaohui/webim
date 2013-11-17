@@ -53,8 +53,9 @@ function wsOnMessage($clientID, $message, $messageLength, $binary) {
             //var_dump($to.clientid);
             if($toid)
             	$Server->wsSend($toid,$message);
-            else if($db->existsById($toid)){
+            else if($db->existsById($messagejson["playboard"]["to"])){
             	//添加到临时队列
+                print_r($toid."exist");
             	$redis->addMessage($messagejson["playboard"]["from"],$messagejson["playboard"]["to"],$messagejson["playboard"]["msg"],$messagejson["playboard"]["date"]);
             }
 			break;

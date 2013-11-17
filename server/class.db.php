@@ -55,7 +55,9 @@
  	}
  	
  	public function existsById($id){
- 		$sql = "select * from user where id= :id";
+        //$id = (int)$id;
+ 		$sql = "select * from user where id=:id";
+        print_r($id);
  		$res = $this->dbhelper->testexists($sql,array("id"=>$id),"id");
  		return $res;
  	}
