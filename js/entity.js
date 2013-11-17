@@ -22,6 +22,12 @@ $(document).ready(function($) {
 					return user.id;
 				}return null;
 			},
+			getuserob: function(){
+				var user = localStorage.getObject(me.username);
+				if(user){
+					return user;
+				}return null;
+			},
 			gettalk: function(){
 				return localStorage.getItem(me.username+"-current-talking");
 				//return current_talking.username;

@@ -127,13 +127,13 @@
 
 <div data-role="page" id="setup" data-theme="a">
 	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
-			<ul data-role="listview" data-inset="true" data-theme='e'>
+			<ul data-role="listview" data-inset="true" data-theme='a'>
 				<li><a href="#"><img src="#" id="me-img" class="head-image"/></a></li>
 				<li><a href="#" id="me-watch">我的的关注</a>
 				<li><a href="changepass.php">更改密码</a>
 			</ul>
 			<form>
-			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="e">
+			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="a">
 			        <legend>个性化标签</legend>
 			        <ul data-role="listview" data-inset="true" id="me-label">
 			        </ul>			        
@@ -141,7 +141,7 @@
 			    </fieldset>
 			</form>
 			<form>
-			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="e">
+			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="a">
 			        <legend>设置</legend>
 			        <fieldset class="ui-grid-a">
 						<div class="ui-block-a" style="width:48%"><div class="ui-bar ui-bar-e">仅接收好友推荐</div></div>
@@ -159,7 +159,7 @@
 					</fieldset>					
 			    </fieldset>
 			</form>
-			<ul data-role="listview" data-inset="true" data-theme='e'>
+			<ul data-role="listview" data-inset="true" data-theme='a'>
 				<li><a href="about.php">关于</a>
 				<li><a href="#">退出当前账号</a>
 			</ul>

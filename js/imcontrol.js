@@ -80,9 +80,9 @@ $(document).on("pageshow","#friend-information",function(event){
 });	 
 $(document).on("pageinit","#setup",function(event){
 	if(typeof(Storage)!=="undefined") {
-		var user = localStorage.getItem("user");
+		var user = Entity.getuserob();
 		if(user){
-			user = JSON.parse(user);
+			//user = JSON.parse(user);
 			$("#me-img").attr("src", user.img);
 			$("#me-watch").attr("href","information.php?id="+user.id);
 			if(user.labels){
