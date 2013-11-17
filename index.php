@@ -90,7 +90,7 @@
 
 <div data-role="page" class="recommend" id="recommend" data-theme="a">
 	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll>
-		<ul data-role="listview" class="recommend-list" data-theme="d" data-dividertheme="e" data-filter="true" data-filter-theme="d" data-filter-placeholder="检索...">
+		<ul data-role="listview" class="recommend-list" data-theme="d" data-filter="true" data-filter-theme="d" data-filter-placeholder="检索...">
 			<!-- 通过JS加载 -->
 			<li></li>
 			<li>xxxxx</li>
