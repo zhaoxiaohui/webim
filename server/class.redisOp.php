@@ -26,13 +26,13 @@ class RedisOp {
     }
     
     public function addMessage($from, $to, $message, $date){
-    	$this->redis->sAdd($to, $from);
-    	$this->redis->lPush($to.':'.$from.'message', $message);
-    	$this->redis->lPush($to.':'.$from.'date', $date);
+    	self::$redis->sAdd($to, $from);
+    	self::$redis->lPush($to.':'.$from.'message', $message);
+    	self::$redis->lPush($to.':'.$from.'date', $date);
     }
     
     public function getMessages($id){
-    	$users = $this->redis->sMembers($id);
+    	$users = self::$redis->sMembers($id);
     	$res = array();
     	foreach($users as $value){
     		$from = $value;
@@ -41,9 +41,9 @@ class RedisOp {
     		$msgs = array();
     		$dates = array();
     		while(true){
-				$onemsg = $this->redis->rPop($to.':'.$from.'message');
+				$onemsg = self::$redis->rPop($to.':'.$from.'message');
 				if(!$onemsg)break;
-				$onedate = $this->redis->rPop($to.':'.$from.'date');
+				$onedate = self::$redis->rPop($to.':'.$from.'date');
 				array_push($msgs, $onemsg);
 				array_push($dates, $onedate);
     		}
@@ -51,7 +51,7 @@ class RedisOp {
     		$one['date'] = $dates;
     		
     		array_push($res, $one);
-    		$this->redis->sRem($to, $from);
+    		self::$redis->sRem($to, $from);
     	}
     	return $res;
     }
