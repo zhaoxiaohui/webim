@@ -30,8 +30,8 @@
         $sql = "select `id`,`nickname`,`username`,`labels`,`img` from user where id in(select `userid2` from friends where userid=:userid)";
         $res = $this->dbhelper->selectAll($sql,array("userid"=>(int)$id));
         //print_r(count($res));
-        if(count($res) ==0)
- 			return null;
+        if(!$res || count($res) ==0)
+ 			return array();
  		return $res;   
  	}
  	public function login($username, $password){
