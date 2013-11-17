@@ -49,7 +49,7 @@
 
 <div data-role="page" id="friends" class="friends" data-theme="a">
 	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll>
-		<ul data-role="listview" data-iscroll="" data-inset="true" class="friend-list" data-dividertheme="e" data-filter="true" data-filter-theme="d" data-filter-placeholder="搜索好友...">
+		<ul data-role="listview" data-iscroll="" data-autodividers="true"  data-inset="true" class="friend-list" data-dividertheme="a" data-filter="true" data-filter-theme="d" data-filter-placeholder="搜索好友...">
 			<!-- 通过JS加载 -->
 		</ul>
 	</div>

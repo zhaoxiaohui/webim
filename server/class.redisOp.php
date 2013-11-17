@@ -26,9 +26,10 @@ class RedisOp {
     }
     
     public function addMessage($from, $to, $message, $date){
-    	self::$redis->sAdd($to, $from);
-    	self::$redis->lPush($to.':'.$from.'message', $message);
-    	self::$redis->lPush($to.':'.$from.'date', $date);
+    	print_r("to:".$to." from:".$from);
+        self::$redis->sAdd($to, $from);
+    	self::$redis->lPush($to.':'.$from.':'.'message', $message);
+    	self::$redis->lPush($to.':'.$from.':'.'date', $date);
     }
     
     public function getMessages($id){
@@ -41,9 +42,9 @@ class RedisOp {
     		$msgs = array();
     		$dates = array();
     		while(true){
-				$onemsg = self::$redis->rPop($to.':'.$from.'message');
+				$onemsg = self::$redis->rPop($to.':'.$from.':'.'message');
 				if(!$onemsg)break;
-				$onedate = self::$redis->rPop($to.':'.$from.'date');
+				$onedate = self::$redis->rPop($to.':'.$from.':'.'date');
 				array_push($msgs, $onemsg);
 				array_push($dates, $onedate);
     		}
