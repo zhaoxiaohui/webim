@@ -25,7 +25,7 @@ class OnLineUser{
 		print_r($this->users[$clientid]);
 	}
 	public function getUser($name){
-        print_r($name);
+        //print_r($name);
         foreach($this->users as $key=>$user){
             if($user->username == $name){
                 return $key;
@@ -34,11 +34,11 @@ class OnLineUser{
 		//if(array_key_exists($name,$this->users)){
 		//	return $this->users[$name];
 		//}
-        print_r("false");
+        //print_r("false");
 		return null;
 	}
 	public function getUserById($id){
-        print_r($id);
+        //print_r($id);
         foreach($this->users as $key=>$user){
             if($user->id == $id){
                 return $key;
@@ -47,7 +47,7 @@ class OnLineUser{
 		//if(array_key_exists($name,$this->users)){
 		//	return $this->users[$name];
 		//}
-        print_r("false");
+        //print_r("false");
 		return null;
 	}
     public function removeUser($clientid){

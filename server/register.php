@@ -7,7 +7,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $personal = $_POST['personal-label'];
 $nickname = $_POST['nickname'];
-$img = null;
+$img = 'userimage/default.jpg';
 if($db->exists($username)){
 	echo '{"status":"exist"}';
 	exit;
@@ -31,5 +31,6 @@ if(isset($_FILES['head_image_file']) && $_FILES['head_image_file']['error'] == 0
 	$img = 'userimage/'.$lastid.'.'.$extension;
 	if(move_uploaded_file($_FILES['head_image_file']['tmp_name'], $img)){}
 }
+$db->modidyImg($lastid, $img);
 echo '{"status":"success"}';
 ?>

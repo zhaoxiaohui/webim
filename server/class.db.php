@@ -57,9 +57,14 @@
  	public function existsById($id){
         //$id = (int)$id;
  		$sql = "select * from user where id=:id";
-        print_r($id);
+        //print_r($id);
  		$res = $this->dbhelper->testexists($sql,array("id"=>$id),"id");
  		return $res;
+ 	}
+ 	
+ 	public function modidyImg($id,$img){
+ 		$sql = "update user set img=:img where id=:id";
+ 		$this->dbhelper->update($sql,array("img"=>$img,"id"=>$id));
  	}
  }
 ?>
