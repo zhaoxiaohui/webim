@@ -63,13 +63,13 @@ $(document).on( "pageinit", "#friends", function( event ) {
 	  
 	Socket.send(JSON.stringify(message));
  
-	var test = {};
+	/*var test = {};
 	test.type = "addfriend";
 	test.playboard = {};
 	test.playboard.from = 2;
 	test.playboard.to = 1;
 	test.playboard.nickname = "zhaohui";
-	Socket.send(JSON.stringify(test));
+	Socket.send(JSON.stringify(test));*/
 	
 	
 });
@@ -215,7 +215,7 @@ Conversion = {
 						var num = Entity.saveNotify(data);
 						//设置未读
 						//var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
-						$(".unread-notify").html(unread);
+						$(".unread-notify").html(num);
 						$("#setup-me-list").listview("refresh");
 						Friends.addAfterSearch(data.playboard.from);
 					}

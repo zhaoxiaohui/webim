@@ -2,7 +2,7 @@ $(document).on("pageshow","#notify",function(event){
 	var notifys = Entity.getNotify();
 	if(notifys){
 		$.each(notifys, function(i, one){
-			one = JSON.parse(one);
+			//one = JSON.parse(one);
 			var info = "";
 			var span = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
 			var classes = "notify-"+i;
