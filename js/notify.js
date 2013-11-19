@@ -10,7 +10,7 @@ $(document).on("pageshow","#notify",function(event){
 				span= "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
 			var classes = "notify-"+i;
 			if(one.type == "addfriend"){
-				info = "<a href=#add-notify-info-content>好友添加申请...</a>";
+				info = "好友添加申请...";
 			}else{
 				info = "添加状态提醒...";
 			}
@@ -23,9 +23,12 @@ $(document).on("pageshow","#notify",function(event){
 					$("#add-notify-info-header").html("添加好友");
 					$("#add-notify-info-content").html(one.playboard.nickname + " 已经添加添加您为好友");
 					//$.mobile.changePage("#add-notify-info", { role: "dialog" } );
+					$("#add-notify-info").popup();
+					$("#add-notify-info").popup("open");
 				}else{
 					$("#notify-info-header").html("添加好友-状态");
 					$("#notify-info-content").html("添加 "+one.playboard.nickname + one.playboard.confirm==true?" 成功":" 失败");
+					$("#notify-info").popup();
 					$("#notify-info").popup("open");// { role: "dialog" } );
 				}
 				$('.unread'+i).remove();

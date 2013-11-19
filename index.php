@@ -230,7 +230,7 @@
 	</div><!-- /content -->
 </div><!-- /page login-->
 
-<div data-role="popup" id="add-notify-info" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+<div id="add-notify-info" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
     <div data-role="header" data-theme="a" class="ui-corner-top">
         <h1 id="add-notify-info-header"></h1>
     </div>
@@ -239,7 +239,7 @@
         <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" id="add-confirm">确定</a>
     </div>
 </div>
-<div data-role="popup" id="notify-info" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+<div id="notify-info" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
     <div data-role="header" data-theme="a" class="ui-corner-top">
         <h1 id="notify-info-header"></h1>
     </div>
