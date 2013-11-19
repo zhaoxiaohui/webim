@@ -205,9 +205,9 @@ Conversion = {
 					if(data){
 						var num = Entity.saveNotify(data);
 						//设置未读
-						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
-						$("#notification").append(unread);
-						
+						//var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
+						$(".unread-notify").html(unread);
+						$("#setup-me-list").listview("refresh");
 						Friends.addAfterSearch(data.playboard.from);
 					}
 				}
@@ -218,8 +218,9 @@ Conversion = {
 					if(data){
 						var num = Entity.saveNotify(data);
 						//设置未读
-						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
-						$("#notification").append(unread);
+						//var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
+						$(".unread-notify").html(unread);
+						$("#setup-me-list").listview("refresh");
 						if(data.playboard.confirm){
 							Friends.addAfterSearch(data.playboard.id);
 						}
@@ -235,13 +236,14 @@ Conversion = {
 							num = Entity.saveNotify(data);
 						});
 					}
-					var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
-					$("#notification").append(unread);
+					$(".unread-notify").html(unread);
+					$("#setup-me-list").listview("refresh");
 				}
 			});
 			$("#notification").unbind("click");
 			$("#notification").bind("click",function(ev){
-				$(".unread-notify").remove();
+				$(".unread-notify").html("0");
+				$("#setup-me-list").listview("refresh");
 			});
 		}
 }

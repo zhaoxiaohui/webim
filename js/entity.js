@@ -42,13 +42,16 @@ $(document).ready(function($) {
 				//current_talking.username = null;
 			},
 			saveNotify: function(message){
-				var notifys = localStorage.getObject(prefix+"taoliao-notify");
+				var values = new com.js.util.ArrayList();
+				
+				var notifys = localStroage.getObject(prefix+"taoliao-notify");
+>>>>>>> c6a17b81965037177452b7f16672e719da1632ba
 				if(!notifys){
-					notifys = new com.js.util.ArrayList();
+					values.setData(notifys);
 				}
-				notifys.add(message);
-				localStorage.setObject(prefix+"taoliao-notify", notifys);
-				return notifys.getSize();
+				values.add(message);
+				localStorage.setObject(prefix+"taoliao-notify", values);
+				return values.getSize();
 			},
 			getNotify: function(){
 				return localStorage.getObject(prefix+"taoliao-notify");
