@@ -16,7 +16,7 @@ $(document).on("pageshow","#notify",function(event){
 			$('.notify-'+i).unbind("click");
 			$('.notify-'+i).bind("click",function(e){
 				if(one.type=="addfriend"){
-					$("#add-notify-info-header")。html("添加好友");
+					$("#add-notify-info-header").html("添加好友");
 					$("#add-notify-info-content").html(one.playboard.nickname + "已经添加添加您为好友");
 					$.mobile.changePage( "#add-notify-info", { role: "dialog" } );
 				}else{
