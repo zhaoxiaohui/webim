@@ -64,6 +64,27 @@ function wsOnMessage($clientID, $message, $messageLength, $binary) {
 			$msg = array("type"=>"conversations","playboard"=>$msgs);
 			$Server->wsSend($clientID, json_encode($msg));
 			break;
+		case "search-user":
+			$res = $db->searchUser($messagejson["playboard"]["id"]);
+			$msg = array("type"=>"search-user","playboard"=>$res);
+			$Server->wsSend($clientID, json_encode($msg));
+		 	break;
+		case "addfriend":
+			$db->addFriend($messagejson["playboard"]["from"],$messagejson["playboard"]["to"]);
+			$toid = $onlines->getUserById($messagejson["playboard"]["to"]);
+			if($toid)
+            	$Server->wsSend($toid,$message);
+            else if($db->existsById($messagejson["playboard"]["to"])){
+            	//添加到临时队列
+                //print_r($toid."exist");
+            	$redis->addNotify($messagejson["playboard"]["to"],$message);
+            }
+			break;
+		case "getnotifys":
+			$msgs = $redis->getNotify($messagejson["playboard"]["id"]);
+			$msg = array("type"=>"getnotifys","playboard"=>$msgs);
+			$Server->wsSend($clientID, json_encode($msg));
+			break;
 	}
 	//$Server->wsSend($clientID, "xx");
 	/**

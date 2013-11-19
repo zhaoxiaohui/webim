@@ -5,6 +5,12 @@ Friends = {
 		load : function(){
 			$(".friend-list").empty();
 			$.each(friends, function(i, one) {
+				Friends.insertListView(one);
+			});
+			Friends.refreshListView();
+		},
+		insertListView: function(one){
+			if(one){
 				if(one.img=="")
 					one.img = "img/taochat.png";
 				var userinfo = "<a href='#'><img class='ui-li-thumb head-image-little' src='" + one.img+"'/>";
@@ -16,7 +22,7 @@ Friends = {
 						$.each(labels, function(i, l)
 						{
 							userinfo += l +"   ";
-						})
+						});
 				}
 				userinfo +="</p></a>"
 				//var contact = "<div class='ui-btn-inner ui-li'><div class='ui-btn-text'>"+userinfo+"</div><span class='ui-icon ui-icon-arrow-r ui-icon-shadow'> </span></div>";
@@ -62,11 +68,12 @@ Friends = {
 					event.preventDefault();
 					return false;
 				});
-			})
+			}
+		},
+		refreshListView: function(){
 			$(".friend-list").listview();
             $(".friend-list").listview("refresh");    
 		},
-
 		setContactName : function(user){
 			//var upper_user = user.toLowerCase().replace(/\b[a-z]/g, function(letter) {
 			//	return letter.toUpperCase();
@@ -147,6 +154,21 @@ Friends = {
 		},
 		get : function(id){
 			return friends[id];
+		},
+		addAfterSearch: function(id){
+			var message = {};
+			message.type = "search-user";
+			message.playboard = {};
+			message.playboard.id = id;
+			Socket.send(JSON.stringify(message));
+			
+			CommandHandler.registerHandler({
+				type: "search-user",
+				run: function(data){
+					if(data.playboard.length > 0)
+						Friends.insertListView(data.playboard);
+				}
+			});
 		}
 }
 });

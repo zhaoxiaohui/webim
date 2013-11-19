@@ -48,7 +48,7 @@
 
 
 <div data-role="page" id="friends" class="friends" data-theme="a">
-	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll>
+	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
 		<ul data-role="listview" data-iscroll="" data-autodividers="true"  data-inset="true" class="friend-list" data-dividertheme="a" data-filter="true" data-filter-theme="d" data-filter-placeholder="搜索好友...">
 			<!-- 通过JS加载 -->
 		</ul>
@@ -68,7 +68,7 @@
 </div>
 
 <div data-role="page" id="goods" class="goods" data-theme="a">
-	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll>
+	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
 		<div class="iscroll-pulldown">
           <span class="iscroll-pull-icon"></span><span class="iscroll-pull-label" data-iscroll-loading-text="正在努力加载..." data-iscroll-pulled-text="放手加载...">下拉刷新</span>
         </div>
@@ -89,16 +89,12 @@
 </div>
 
 <div data-role="page" class="recommend" id="recommend" data-theme="a">
-	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll>
+	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
 		<ul data-role="listview" class="recommend-list" data-theme="d" data-filter="true" data-filter-theme="d" data-filter-placeholder="检索...">
 			<!-- 通过JS加载 -->
 			<li></li>
 			<li>xxxxx</li>
 			<li>xxxxx</li>
-			<li>xxxxx</li>
-			<li>xxxxx</li>
-			<li>xxxxx</li>
-			
 			<li>xxxxx</li>
 			<li>xxxxx</li>
 			<li>xxxxx</li>
@@ -129,8 +125,9 @@
 	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
 			<ul data-role="listview" data-inset="true" data-theme='a'>
 				<li><a href="#"><img src="#" id="me-img" class="head-image"/></a></li>
-				<li><a href="#" id="me-watch">我的的关注</a>
-				<li><a href="changepass.php">更改密码</a>
+				<li><a href="#" id="me-watch">我的的关注</a></li>
+				<li><a href="changepass.php">更改密码</a></li>
+				<li class="ui-li-has-count" id="notification"><a href="notify.php">消息</a></li>
 			</ul>
 			<form>
 			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="a">
@@ -144,14 +141,14 @@
 			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="a">
 			        <legend>设置</legend>
 			        <fieldset class="ui-grid-a">
-						<div class="ui-block-a" style="width:48%"><div class="ui-bar ui-bar-e">仅接收好友推荐</div></div>
+						<div class="ui-block-a" style="width:48%"><div class="ui-bar ui-bar-a">仅接收好友推荐</div></div>
 						<select class="ui-blcok-b" name="recommend-toggle" id="recommend-toggle" data-role="slider">
     										<option value="off">Off</option>
    												 	<option value="on">On</option>
 						</select>	
 					</fieldset>
 					 <fieldset class="ui-grid-a">
-						<div class="ui-block-a" style="width:48%"><div class="ui-bar ui-bar-e">接收添加好友推荐</div></div>
+						<div class="ui-block-a" style="width:48%"><div class="ui-bar ui-bar-a">接收添加好友推荐</div></div>
 						<select class="ui-blcok-b" name="addfriend-toggle" id="addfriend-toggle" data-role="slider" >
     										<option value="off">Off</option>
    												 	<option value="on">On</option>
@@ -214,7 +211,7 @@
 			</ul>
 			<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed-icon="arrow-d" data-expanded-icon="arrow-u">
     			<h4>个性化标签</h4>
-    			<ul data-role="listview" data-inset="false" id="information-label">
+    			<ul data-role="listview" data-inset="false" id="information-label"/>
     			</ul>
 			</div>
 		</div>

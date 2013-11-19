@@ -179,6 +179,36 @@ Conversion = {
 						Friends.appendMessage(data.playboard.from);
 				}
 			});
+		},
+		
+		bindNotifyMessage: function(){
+			CommandHandler.registerHandler({
+				type:"addfriend",
+				run: function(data){
+					if(data.playborad.length > 0){
+						var num = Entity.saveNotify(data);
+						//设置未读
+						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
+						$("#notification").append(unread);
+						
+						Friends.addAfterSearch(data.playboard.from);
+					}
+				}
+			});
+			CommandHandler.registerHandler({
+				type:"addfriend-confirm",
+				run: function(data){
+					if(data.playborad.length > 0){
+						var num = Entity.saveNotify(data);
+						//设置未读
+						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
+						$("#notification").append(unread);
+						if(data.playboard.confirm){
+							Friends.addAfterSearch(data.playboard.id);
+						}
+					}
+				}
+			});
 		}
 }
 

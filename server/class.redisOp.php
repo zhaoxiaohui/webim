@@ -57,5 +57,18 @@ class RedisOp {
     	return $res;
     }
     
+    public function addNotify($id,$msg){
+    	self::$redis->lPush('notify'.':'.$id, $msg);
+    }
+    
+    public function getNotify($id){
+    	$res = array();
+    	while(true){
+    		$onenotify = self::$redis->rPop("notify".':'.$id);
+    		if(!$onenotify)break;
+    		array_push($res,$onenotify);
+    	}
+    	return $res;
+    }
 }
 ?>

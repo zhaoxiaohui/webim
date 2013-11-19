@@ -31,6 +31,14 @@
         $res = $this->dbhelper->selectAll($sql,array("userid"=>(int)$id));
         //print_r(count($res));
         if(!$res || count($res) ==0)
+ 			return null;
+ 		return $res[0];   
+ 	}
+ 	public function searchUser($id){
+ 		$sql = "select `id`,`nickname`,`username`,`labels`,`img` from user where id=:id";
+ 		$res = $this->dbhelper->selectAll($sql,array("id"=>(int)$id));
+        //print_r(count($res));
+        if(!$res || count($res) ==0)
  			return array();
  		return $res;   
  	}
@@ -65,6 +73,10 @@
  	public function modidyImg($id,$img){
  		$sql = "update user set img=:img where id=:id";
  		$this->dbhelper->update($sql,array("img"=>$img,"id"=>$id));
+ 	}
+ 	
+ 	public function addFriend($id1, $id2){
+ 		
  	}
  }
 ?>
