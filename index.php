@@ -127,7 +127,7 @@
 				<li><a href="#"><img src="#" id="me-img" class="head-image"/></a></li>
 				<li><a href="#" id="me-watch">我的的关注</a></li>
 				<li><a href="changepass.php">更改密码</a></li>
-				<li class="ui-li-has-count" id="notification"><a href="notify.php">消息</a></li>
+				<li class="ui-li-has-count" id="notification"><a href="notify.php">消息</a><span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'></span></li>
 			</ul>
 			<form>
 			    <fieldset data-role="collapsible" data-theme="a" data-content-theme="a">
