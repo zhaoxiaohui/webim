@@ -46,12 +46,12 @@ $(document).on( "pageinit", "#friends", function( event ) {
 					});
 					Friends.setUnRead(oneuser.from);
 				});
-				var message = {};
-				message.type = "getnotifys";
-				message.playboard = {};
-				message.playboard.id = Entity.getuserid();
-				Socket.send(JSON.stringify(message));
-			}
+            }
+			var message = {};
+			message.type = "getnotifys";
+			message.playboard = {};
+			message.playboard.id = Entity.getuserid();
+			Socket.send(JSON.stringify(message));
 		}
 	});
 	
