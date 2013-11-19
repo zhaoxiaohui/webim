@@ -235,4 +235,5 @@
 <script src="js/socket.js"></script>
 <script src="js/friends.js"></script>
 <script src="js/imcontrol.js"></script>
+<script src="js/notify.js" type="text/javascript"></script>
 </html>

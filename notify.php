@@ -5,11 +5,6 @@
 <title>淘聊</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-<link rel="stylesheet" media="screen" href="css/jquery.mobile-1.3.1.min.css" />
-<link rel="stylesheet" media="screen" href="css/jqm-icon-pack-2.0-original.css" />
-<link href="css/jquery.mobile.iscrollview.css" media="screen" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" media="screen" href="css/main.css" />
-
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta property="og:type" content="website"/>
 
@@ -48,14 +43,6 @@
     </div>
 </div>
 </body>
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jquery.mobile-1.3.1.min.js"></script>
-<script src="js/iscroll.js" type="text/javascript"></script>
-<script src="js/jquery.mobile.iscrollview.js" type="text/javascript"></script>
 
 
-<script src="js/util/command.js" type="text/javascript"></script>
-<script src="js/system.js" type="text/javascript"></script>
-<script src="js/entity.js" type="text/javascript"></script>
-<script src="js/notify.js" type="text/javascript"></script>
 </html>
