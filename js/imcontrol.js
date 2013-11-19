@@ -63,6 +63,15 @@ $(document).on( "pageinit", "#friends", function( event ) {
 	  
 	Socket.send(JSON.stringify(message));
  
+	var test = {};
+	test.type = "addfriend";
+	test.playboard = {};
+	test.playboard.from = 2;
+	test.playboard.to = 1;
+	test.playboard.nickname = "zhaohui";
+	Socket.send(JSON.stringify(test));
+	
+	
 });
 $(document).on("pagehide","#conversation",function(event){
 	Entity.leavetalk();
