@@ -233,7 +233,7 @@ Conversion = {
 					var num = 0;
 					if(data.playboard.length > 0){
 						$.each(data.playboard, function(i,notify){
-							num = Entity.saveNotify(data);
+							num = Entity.saveNotify(notify);
 						});
 					}
 					$(".unread-notify").html(num);
