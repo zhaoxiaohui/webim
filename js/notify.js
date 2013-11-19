@@ -3,7 +3,7 @@ $(document).on("pageshow","#notify",function(event){
 	if(notifys){
 		$.each(notifys, function(i, one){
 			var info = "";
-			var span = var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
+			var span = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
 			var classes = "notify-"+i;
 			if(one.type == "addfriend"){
 				info = "好友添加申请...";

@@ -237,7 +237,7 @@ Conversion = {
 						});
 					}
 					$(".unread-notify").html(num);
-					$("#setup-me-list").listview("refresh");
+					//$("#setup-me-list").listview("refresh");
 				}
 			});
 			$("#notification").unbind("click");
