@@ -28,5 +28,7 @@ $(document).on("pageshow","#notify",function(event){
 				Entity.removeNotify(i);
 			});
 		});
+		$("#notify-list").listview();
+		$("#notify-list").listview('refresh');
 	}
 });
