@@ -42,7 +42,7 @@ $(document).ready(function($) {
 				//current_talking.username = null;
 			},
 			saveNotify: function(message){
-				var notifys = localStroage.getObject(prefix+"taoliao-notify");
+				var notifys = localStorage.getObject(prefix+"taoliao-notify");
 				if(!notifys){
 					notifys = new com.js.util.ArrayList();
 				}
