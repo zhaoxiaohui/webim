@@ -10,14 +10,26 @@ $(document).on( "pageinit", "#friends", function( event ) {
 			if(data.playboard.length > 0){
 				$.each(data.playboard, function(i,user){
 					Friends.add(user, user.id);
+                    //Friends.load();
+                    //var message = {};
+                    //message.type = "conversations";
+                    //message.playboard = {};
+                    //message.playboard.id = Entity.getuserid();
+                    //Socket.send(JSON.stringify(message));
 				});
+                Friends.load();                
+                var message = {};
+                message.type = "conversations";
+                message.playboard = {};
+                message.playboard.id = Entity.getuserid();
+                Socket.send(JSON.stringify(message));
 			}
-			Friends.load();
-			var message = {};
-			message.type = "conversations";
-			message.playboard = {};
-			message.playboard.id = Entity.getuserid();
-			Socket.send(JSON.stringify(message));
+			//Friends.load();
+			//var message = {};
+			//message.type = "conversations";
+			//message.playboard = {};
+			//message.playboard.id = Entity.getuserid();
+			//Socket.send(JSON.stringify(message));
 		}
 	});
 	

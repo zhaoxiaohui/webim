@@ -32,7 +32,7 @@
         //print_r(count($res));
         if(!$res || count($res) ==0)
  			return null;
- 		return $res[0];   
+ 		return $res;   
  	}
  	public function searchUser($id){
  		$sql = "select `id`,`nickname`,`username`,`labels`,`img` from user where id=:id";
@@ -40,7 +40,7 @@
         //print_r(count($res));
         if(!$res || count($res) ==0)
  			return array();
- 		return $res;   
+ 		return $res[0];   
  	}
  	public function login($username, $password){
  		$sql = "select `id`,`nickname`,`username`,`labels`,`img`,`point` from user where username=:username and password=:password";
