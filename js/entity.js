@@ -43,13 +43,12 @@ $(document).ready(function($) {
 			},
 			saveNotify: function(message){
 				var values = new com.js.util.ArrayList();
-				
 				var notifys = localStorage.getObject(prefix+"taoliao-notify");
-				if(!notifys){
+				if(notifys){
 					values.setData(notifys);
 				}
 				values.add(message);
-				localStorage.setObject(prefix+"taoliao-notify", values);
+				localStorage.setObject(prefix+"taoliao-notify", values.getList());
 				return values.getSize();
 			},
 			getNotify: function(){
@@ -66,7 +65,7 @@ $(document).ready(function($) {
 				var notifys = Entity.getNotify();
 				values.setData(notifys);
 				values.removeAt(i);
-				Entity.saveNotify(values);
+				localStorage.setObject(prefix+"taoliao-notify", values.getList());
 			},
 			setFriendsUpdate: function(){
 				localStorage.setItem(prefix+"friends-update",true);
