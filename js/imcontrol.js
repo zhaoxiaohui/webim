@@ -46,6 +46,11 @@ $(document).on( "pageinit", "#friends", function( event ) {
 					});
 					Friends.setUnRead(oneuser.from);
 				});
+				var message = {};
+				message.type = "getnotifys";
+				message.playboard = {};
+				message.playboard.id = Entity.getuserid();
+				Socket.send(JSON.stringify(message));
 			}
 		}
 	});
@@ -120,7 +125,7 @@ $(document).ready(function(){
 	
 	
 	Conversion.bindSendMessage();
-	
+	Conversion.bindNotifyMessage();
 
 });
 
@@ -197,7 +202,7 @@ Conversion = {
 			CommandHandler.registerHandler({
 				type:"addfriend",
 				run: function(data){
-					if(data.playborad.length > 0){
+					if(data){
 						var num = Entity.saveNotify(data);
 						//设置未读
 						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
@@ -210,7 +215,7 @@ Conversion = {
 			CommandHandler.registerHandler({
 				type:"addfriend-confirm",
 				run: function(data){
-					if(data.playborad.length > 0){
+					if(data){
 						var num = Entity.saveNotify(data);
 						//设置未读
 						var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
@@ -220,6 +225,23 @@ Conversion = {
 						}
 					}
 				}
+			});
+			CommandHandler.registerHandler({
+				type:"getnotifys",
+				run: function(data){
+					var num = 0;
+					if(data.playboard.length > 0){
+						$.each(data.playboard, function(i,notify){
+							num = Entity.saveNotify(data);
+						});
+					}
+					var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
+					$("#notification").append(unread);
+				}
+			});
+			$("#notification").unbind("click");
+			$("#notification").bind("click",function(ev){
+				$(".unread-notify").remove();
 			});
 		}
 }
