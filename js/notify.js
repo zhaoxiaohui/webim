@@ -21,7 +21,7 @@ $(document).on("pageshow","#notify",function(event){
 				if(one.type == "addfriend"){
 					$("#add-notify-info-header").html("添加好友");
 					$("#add-notify-info-content").html(one.playboard.nickname + " 已经添加添加您为好友");
-					$("#add-notify-info").popup("open");// { role: "dialog" } );
+					$.mobile.changePage("#add-notify-info", { role: "dialog" } );
 				}else{
 					$("#notify-info-header").html("添加好友-状态");
 					$("#notify-info-content").html("添加 "+one.playboard.nickname + one.playboard.confirm==true?" 成功":" 失败");
