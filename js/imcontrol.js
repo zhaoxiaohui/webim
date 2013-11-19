@@ -219,7 +219,7 @@ Conversion = {
 						var num = Entity.saveNotify(data);
 						//设置未读
 						//var unread = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread-notify unread'>"+num+"</span>";
-						$(".unread-notify").html(unread);
+						$(".unread-notify").html(num);
 						$("#setup-me-list").listview("refresh");
 						if(data.playboard.confirm){
 							Friends.addAfterSearch(data.playboard.id);
@@ -236,7 +236,7 @@ Conversion = {
 							num = Entity.saveNotify(data);
 						});
 					}
-					$(".unread-notify").html(unread);
+					$(".unread-notify").html(num);
 					$("#setup-me-list").listview("refresh");
 				}
 			});

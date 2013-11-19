@@ -44,8 +44,7 @@ $(document).ready(function($) {
 			saveNotify: function(message){
 				var values = new com.js.util.ArrayList();
 				
-				var notifys = localStroage.getObject(prefix+"taoliao-notify");
->>>>>>> c6a17b81965037177452b7f16672e719da1632ba
+				var notifys = localStorage.getObject(prefix+"taoliao-notify");
 				if(!notifys){
 					values.setData(notifys);
 				}
