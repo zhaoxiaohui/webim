@@ -5,7 +5,7 @@ $(document).on("pageshow","#notify",function(event){
 			var info = "";
 			var span = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
 			var classes = "notify-"+i;
-			if(one.type == "addfriend"){
+			if(one.playboard.type == "addfriend"){
 				info = "好友添加申请...";
 			}else{
 				info = "添加状态提醒...";
@@ -15,7 +15,7 @@ $(document).on("pageshow","#notify",function(event){
 			
 			$('.notify-'+i).unbind("click");
 			$('.notify-'+i).bind("click",function(e){
-				if(one.type=="addfriend"){
+				if(one.playboard.type=="addfriend"){
 					$("#add-notify-info-header").html("添加好友");
 					$("#add-notify-info-content").html(one.playboard.nickname + "已经添加添加您为好友");
 					$.mobile.changePage( "#add-notify-info", { role: "dialog" } );
