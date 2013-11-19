@@ -4,7 +4,9 @@ $(document).on("pageshow","#notify",function(event){
 		$.each(notifys, function(i, one){
 			//one = JSON.parse(one);
 			var info = "";
-			var span = "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
+			var span = "<span />";
+			if(!one.read)
+				span= "<span class='ui-li-count ui-btn-up-b ui-btn-corner-all unread"+i+" unread'>"+1+"</span>";
 			var classes = "notify-"+i;
 			if(one.type == "addfriend"){
 				info = "好友添加申请...";
@@ -19,14 +21,15 @@ $(document).on("pageshow","#notify",function(event){
 				if(one.type=="addfriend"){
 					$("#add-notify-info-header").html("添加好友");
 					$("#add-notify-info-content").html(one.playboard.nickname + "已经添加添加您为好友");
-					$.mobile.changePage( "#add-notify-info", { role: "dialog" } );
+					$("#add-notify-info").popup("open");// { role: "dialog" } );
 				}else{
 					$("#notify-info-header").html("添加好友-状态");
 					$("#notify-info-content").html("添加 "+one.playboard.nickname + one.playboard.confirm==true?" 成功":" 失败");
-					$.mobile.changePage( "#notify-info", { role: "dialog" } );
+					$("#notify-info").popup("open");// { role: "dialog" } );
 				}
 				$('.unread'+i).remove();
-				Entity.removeNotify(i);
+				one.read = true;
+				Entity.saveAll(notifys);
 			});
 		});
 		$("#notify-list").listview();

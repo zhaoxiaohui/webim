@@ -51,6 +51,10 @@ $(document).ready(function($) {
 				localStorage.setObject(prefix+"taoliao-notify", values.getList());
 				return values.getSize();
 			},
+			saveAll: function(notifys){
+				localStorage.setObject(prefix+"taoliao-notify", notifys);
+			}
+			,
 			getNotify: function(){
 				return localStorage.getObject(prefix+"taoliao-notify");
 			},
