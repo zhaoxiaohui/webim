@@ -10,7 +10,7 @@ Friends = {
 			Friends.refreshListView();
 		},
 		insertListView: function(one){
-			if(one){
+			if(one != null){
 				if(one.img=="")
 					one.img = "img/taochat.png";
 				var userinfo = "<a href='#'><img class='ui-li-thumb head-image-little' src='" + one.img+"'/>";
