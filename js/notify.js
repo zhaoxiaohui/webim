@@ -18,9 +18,9 @@ $(document).on("pageshow","#notify",function(event){
 			
 			$('.notify-'+i).unbind("click");
 			$('.notify-'+i).bind("click",function(e){
-				if(one.type=="addfriend"){
+				if(one.type == "addfriend"){
 					$("#add-notify-info-header").html("添加好友");
-					$("#add-notify-info-content").html(one.playboard.nickname + "已经添加添加您为好友");
+					$("#add-notify-info-content").html(one.playboard.nickname + " 已经添加添加您为好友");
 					$("#add-notify-info").popup("open");// { role: "dialog" } );
 				}else{
 					$("#notify-info-header").html("添加好友-状态");
@@ -28,8 +28,10 @@ $(document).on("pageshow","#notify",function(event){
 					$("#notify-info").popup("open");// { role: "dialog" } );
 				}
 				$('.unread'+i).remove();
-				one.read = true;
-				Entity.saveAll(notifys);
+				if(!one.read){
+					one.read = true;
+					Entity.saveAll(notifys);
+				}
 			});
 		});
 		$("#notify-list").listview();
