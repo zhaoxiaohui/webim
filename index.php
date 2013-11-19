@@ -225,7 +225,7 @@
 	</div><!-- /header -->
 
 	<div data-role="content" data-iscroll>
-		<ul data-role="listview" data-inset="true" data-theme='a' id="notify-list">
+		<ul data-role="listview" data-inset="true" data-theme='a' id="notify-list" data-iscroll>
 		</ul>
 	</div><!-- /content -->
 </div><!-- /page login-->
