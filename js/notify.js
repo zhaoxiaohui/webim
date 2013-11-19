@@ -10,7 +10,7 @@ $(document).on("pageshow","#notify",function(event){
 			}else{
 				info = "添加状态提醒...";
 			}
-			var li = $("<li>").addClass(classes).html(userinfo).append(span);
+            var li = $("<li>").addClass(classes).html(info).append(span);
 			$("#notify-list").append(li);
 			
 			$('.notify-'+i).unbind("click");
@@ -20,7 +20,7 @@ $(document).on("pageshow","#notify",function(event){
 					$("#add-notify-info-content").html(one.playboard.nickname + "已经添加添加您为好友");
 					$.mobile.changePage( "#add-notify-info", { role: "dialog" } );
 				}else{
-					$("#notify-info-header")。html("添加好友-状态");
+					$("#notify-info-header").html("添加好友-状态");
 					$("#notify-info-content").html("添加 "+one.playboard.nickname + one.playboard.confirm==true?" 成功":" 失败");
 					$.mobile.changePage( "#notify-info", { role: "dialog" } );
 				}
