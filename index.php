@@ -123,7 +123,7 @@
 
 <div data-role="page" id="setup" data-theme="a">
 	<div data-role="content" class="jqm-content jqm-fullwidth" data-iscroll="">
-			<ul data-role="listview" data-inset="true" data-theme='a'>
+			<ul data-role="listview" data-inset="true" data-theme='a' id="setup-me-list">
 				<li><a href="#"><img src="#" id="me-img" class="head-image"/></a></li>
 				<li><a href="#" id="me-watch">我的的关注</a></li>
 				<li><a href="changepass.php">更改密码</a></li>
